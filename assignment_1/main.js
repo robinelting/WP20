@@ -1,15 +1,15 @@
 // Add a <article> tag with a heading and paragraph
 function addArticle () {
-    var article = document.createElement('ARTICLE');
-    var heading = document.createElement('H2');
-    var para = document.createElement('P');
-    var hText = document.createTextNode("This is the heading of the article");
-    var pText = document.createTextNode("This is the article paragraph");
+    let article = document.createElement('ARTICLE');
+    let heading = document.createElement('H2');
+    let para = document.createElement('P');
+    let hText = document.createTextNode("This is the heading of the article");
+    let pText = document.createTextNode("This is the article paragraph");
     para.appendChild(pText);
     heading.appendChild(hText);
     article.appendChild(heading);
     article.appendChild(para);
-    var container = document.getElementsByClassName('container')[0];
+    let container = document.getElementsByClassName('container')[0];
     container.appendChild(article);
 }
 
@@ -21,13 +21,21 @@ function changeLink () {
 
 // Add the attribute 'target' with the value '_blank'
 function addAttribute () {
-    var links = document.getElementById('links');
     links.getElementsByTagName('a')[2].setAttribute('target', '_blank');
 }
 
+// Changes the color of elements with the class 'nav-item' to red. In my function I selected all <a> elements with
+// the class 'nav-link', because inside the <li> elements with class 'nav-item' all <a> elements have the class 'nav-link'
+function changeColor () {
+    let i;
+    for (i = 0; i < document.getElementsByClassName('nav-link').length; i++) {
+        document.getElementsByClassName('nav-link')[i].style.color = "red";
+    }
+}
+
 // Print object to alert box
-function wp20check(object) {
-    var output = ''
+function wp20Check(object) {
+    let output = ''
     for (var property in object) {
         output += property + ': ' + object[property] + '\n';
     }
@@ -37,33 +45,25 @@ function wp20check(object) {
 // Add a sidebar
 function addSidebar () {
     document.getElementsByClassName('col-md-12')[0].className = 'col-md-8';
-    var div2 = document.createElement('DIV');
-    div2.className = 'col-md-4';
-    var div2Header = document.createElement('H3');
-    var div2HeaderText = document.createTextNode('Sidebar');
-    div2Header.appendChild(div2HeaderText);
-    div2.appendChild(div2Header);
-    var container = document.getElementsByClassName('container')[0];
-    container.appendChild(div2);
-}
-
-// Changes the color of elements with the class 'nav-item' to red. In my function I selected all <a> elements with
-// the class 'nav-link', because inside the <li> elements with class 'nav-item' all <a> elements have the class 'nav-link'
-function changeColor () {
-    var i;
-    for (i = 0; i < document.getElementsByClassName('nav-link').length; i++) {
-        document.getElementsByClassName('nav-link')[i].style.color = "red";
-    }
-
+    let divElement = document.createElement('DIV');
+    divElement.className = 'col-md-4';
+    let divElementHeader = document.createElement('H3');
+    let divElementHeaderText = document.createTextNode('Sidebar');
+    divElementHeader.appendChild(divElementHeaderText);
+    divElement.appendChild(divElementHeader);
+    let container = document.getElementsByClassName('container')[0];
+    container.appendChild(divElement);
 }
 
 
+// For index.html
 if (window.location.pathname.includes('/index.html')) {
     window.addEventListener('DOMContentLoaded', function () {
         document.title = "Webprogramming (LIX018P05) - Index";
         addArticle();
         changeLink();
         addAttribute();
+        changeColor();
         var WP20 = {
             Week1: "No lecture",
             Week2: "Assignment 1",
@@ -73,17 +73,17 @@ if (window.location.pathname.includes('/index.html')) {
             Week6: "Assignment 3",
             Week7: "Final Project"
         };
-        wp20check(WP20);
-        changeColor();
+        wp20Check(WP20);
     });
 }
 
+// For second.html
 if (window.location.pathname.includes('/second.html')) {
     window.addEventListener('DOMContentLoaded', function () {
         document.title = "Webprogramming (LIX018P05) - Second";
         changeLink();
         addAttribute();
-        addSidebar();
         changeColor();
+        addSidebar();
     });
 }
