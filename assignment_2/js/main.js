@@ -1,29 +1,18 @@
 function validateForm(ev){
     ev.preventDefault();
-    let firstname = document.getElementById('firstname');
-    if (!firstname.checkValidity()) {
-        document.getElementById('form-alert').innerHTML = 'Incorrect'
-    }
-    let lastname = document.getElementById('lastname');
-    if (!lastname.checkValidity()) {
-        document.getElementById('feedback2').innerHTML = 'Incorrect'
-    }
-    let age = document.getElementById('age');
-    if (!age.checkValidity()) {
-        document.getElementById('feedback3').innerHTML = 'Incorrect'
-    }
-    let city = document.getElementById('city');
-    if (!city.checkValidity()) {
-        document.getElementById('feedback4').innerHTML = 'Incorrect'
-    }
-    let email = document.getElementById('email');
-    if (!email.checkValidity()) {
-        document.getElementById('feedback5').innerHTML = 'Incorrect'
-    }
-    let phonenumber = document.getElementById('phonenumber');
-    if (!phonenumber.checkValidity()) {
-        document.getElementById('feedback6').innerHTML = 'Incorrect'
-    }
+    var forms = document.getElementsByClassName('needs-validation');
+
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('button', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+}, false);
+
 }
 
 function writeFormData(ev){
@@ -56,9 +45,9 @@ function eraseFormData(ev){
 
 
 $(function() {
-    $('button.submit').click(writeFormData); // Create Javascript object with form data
-    $('button.submit').click(validateForm); // Validate the form
-    $('button.erase').click(eraseFormData); // Erase form field values and hide form-content and form-alert
+    $('button.btn1').click(writeFormData); // Create Javascript object with form data
+    //$('#submitButton').click(validateForm); // Validate the form
+    $('button.btn2').click(eraseFormData); // Erase form field values and hide form-content and form-alert
     $('#link-tab').click(function () {
         $('div.tab-content').toggle();
     }); // Toggle the Link tab
