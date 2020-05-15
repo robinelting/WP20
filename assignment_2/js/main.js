@@ -1,20 +1,3 @@
-function validateForm(ev){
-    ev.preventDefault();
-    var forms = document.getElementsByClassName('needs-validation');
-
-    var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('button', function(event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-    });
-}, false);
-
-}
-
 function writeFormData(ev){
     ev.preventDefault();
     let FormData = {
