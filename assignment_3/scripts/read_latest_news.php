@@ -16,7 +16,7 @@ if (isset($_POST['call_now'])){
         $articles_html.= sprintf('<p class="card-text">%s</p>', $value['article']);
         $articles_html.= '<div class="row">';
         $articles_html.= '<div class="col-md-6" style="text-align: right;">';
-        $articles_html.= '<form action="news_edit.php" method="POST">';
+        $articles_html.= '<form action="../news_edit.php" method="POST">';
         $articles_html.= sprintf('<input type="hidden" name="id" value="%s" />', $value['id']);
         $articles_html.= '<button type="submit" class="btn btn-light">Edit</button>';
         $articles_html.= '</form>';
