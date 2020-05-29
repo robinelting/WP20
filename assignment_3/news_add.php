@@ -24,16 +24,6 @@ include __DIR__ . '/tpl/body_start.php';
     </div>
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
-<script>
-    $('#submit').click(function () {
-        var xhr = new XMLHttpRequest;
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-
-            }
-        }
-    })
-</script>
 <?php
 include __DIR__ . '/tpl/body_end.php';
 ?>

@@ -25,22 +25,34 @@ function removeArticle(rm_btn) {
     });
 }
 
-$(function () {
-    $('submit').click(function () {
-        var title = $('title').val();
-        var article = $('article').val();
-        if (title === '' && article === '') {
-            return;
-        } else {
-            var xhr = new XMLHttpRequest;
-            xhr.open('POST', 'news_add.php', true);
-            xhr.send('search-arduino');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-
-                }
-            }
-        }
+function submitForm() {
+    let request = $.ajax({
+        url: "add_item.php",
+        method: "POST",
+        data: {
+            title : $('#title').val(),
+            article : $('#article').val()
+        },
+        dataType: "json"
+    });
+    request.done(function (data) {
+        console.log(data);
+        $('.pd-40').text(data.title);
+        $('#news_container').text(data.article);
     })
-})
+}
+
+var xhr = new XMLHttpRequest;
+xhr.open('POST', 'articles.json', true);
+xhr.send('search=arduino');
+xhr.onload = function () {
+    if (xhr.status === 200) {
+        $(function () {
+            $('form').submit(function (form) {
+                form.preventDefault();
+                submitForm();
+            })
+        });
+    }
+}
 
