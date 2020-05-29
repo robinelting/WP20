@@ -14,10 +14,10 @@ include __DIR__ . '/tpl/head.php';
 include __DIR__ . '/tpl/body_start.php';
 ?>
 
-<h1 class="welcome-name"><?php
+<h1 class="welcome-name">Welcome<?php
     if (isset($_POST['name'])) {
         $name = $_POST['name'];
-        echo "Welcome, $name";
+        echo ", $name";
     } else {
         $name = "";
     }
@@ -33,7 +33,7 @@ include __DIR__ . '/tpl/body_start.php';
     }
     ?></p>
 <div class="table1">
-    <h4>The next 5 leap years, this will be your age!</h4>
+    <p>The next 5 leap years, this will be your age!</p>
     <table>
         <tr>
             <th>Year</th>
@@ -84,16 +84,6 @@ include __DIR__ . '/tpl/body_start.php';
                 }
                 ?></td>
         </tr>
-        <tr>
-            <td>2050</td>
-            <td><?php
-                if (isset($_POST['age'])) {
-                    $age = $_POST['age'];
-                    echo $age + 30;
-                }
-                ?></td>
-        </tr>
-
     </table>
 </div>
 <div class="row">

@@ -1,5 +1,4 @@
 $(function() {
-    $('.table1').hide();
     // Check name
     $('#name').keyup(function () {
         checkName();
@@ -24,10 +23,7 @@ $(function() {
             alert('Please fill in the form correctly.')
         }
     });
-    $('form').submit(function () {
-        $('.table1').show();
-    })
-})
+});
 
 function checkName() {
     let name_input = $('#name');

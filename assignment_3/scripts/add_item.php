@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
     $json_file = fopen('../data/articles.json', 'w');
     fwrite($json_file, json_encode($articles));
     fclose($json_file);
+
     // Redirect to homepage
     header("Location: ../index.php");
     die();
