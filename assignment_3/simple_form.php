@@ -15,13 +15,24 @@ include __DIR__ . '/tpl/body_start.php';
 ?>
 
 <div class="welcome-info">
-    <h1 class="name">Welcome <?php echo $_GET['name'];?>!</h1>
+    <h1 class="name"><?php
+        if (isset($_GET['name'])) {
+            $name = $_GET['name'];
+            echo "Welcome $name!";
+        } else {
+            $name = "";
+        }
+        ?></h1>
     <p class="city"><?php
-        $city = $_GET['place'];
-        if ($city == "Amsterdam") {
-            echo "You're from the capital of the Netherlands!";
-        } else if ($city !== "Amsterdam") {
-            echo "You're from $city!";
+        if (isset($_GET['place'])) {
+            $city = $_GET['place'];
+            if ($city == "Amsterdam") {
+                echo "You're from the capital of the Netherlands!";
+            } elseif ($city !== "Amsterdam") {
+                echo "You're from $city!";
+            }
+        } else {
+            $city = "";
         }
         ?></p>
 </div>
